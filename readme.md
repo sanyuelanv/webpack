@@ -63,7 +63,7 @@
     服务器工具包  
     `npm i --save-dev webpack-dev-middleware webpack-hot-middleware `  
     打包工具包  
-    `npm i --save-dev webpack-merge clean-webpack-plugin html-webpack-plugin uglifyjs-webpack-plugin optimize-css-assets-webpack-plugin mini-css-extract-plugin`
+    `npm i --save-dev webpack-merge clean-webpack-plugin html-webpack-plugin uglifyjs-webpack-plugin optimize-css-assets-webpack-plugin mini-css-extract-plugin inline-manifest-webpack-plugin `
     * 详细介绍
       * `webpack` 核心包
       * `webpack-cli` 命令行工具
@@ -78,6 +78,7 @@
       * `uglifyjs-webpack-plugin` 压缩 `JS`
       * `optimize-css-assets-webpack-plugin` 压缩CSS
       * `mini-css-extract-plugin` 分离 `css`
+      * `inline-manifest-webpack-plugin` 把 `manifest` 写入到 `HTML`（`manifest` & `runtime`）
 5. `eslint` 安装 & 配置 
     * 安装  
     核心包  
@@ -146,6 +147,8 @@
       * `output`
       * `plugins`
       * `module`
+      * 分离 `js` 文件的策略
+      * 第三方 `CSS` 文件插入
 2. 单页面应用
 3. 多页面应用
 4. 优化 & 分包

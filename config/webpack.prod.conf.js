@@ -5,6 +5,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const path = require('path')
 const process = require('process')
 
@@ -34,24 +35,20 @@ const config = webpackMerge(commonConfig, {
       }),
       new OptimizeCSSAssetsPlugin({})
     ],
-    runtimeChunk: { name: () => { return 'manifest' } },
+    runtimeChunk:  { name: 'runtime' },
     splitChunks: {
-      chunks: "async",
-      minSize: 30000,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
+      chunks: 'all',
       cacheGroups: {
-        default: {
-          name:'globals',
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true,
-        },
         vendors: {
           name:'vendors',
           test: /[\\/]node_modules[\\/]/,
           priority: -10
+        },
+        default: {
+          name:'default',
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
         }
       }
     }
@@ -68,8 +65,9 @@ const config = webpackMerge(commonConfig, {
         conservativeCollapse: true
       },
       inject: true,
-      chunks: ['manifest', 'vendors', 'globals', 'app']
-    })
+      chunks: ['runtime','vendors', 'default', 'app']
+    }),
+    new InlineManifestWebpackPlugin('runtime')
   ],
   module: {
     rules: [
