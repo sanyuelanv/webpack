@@ -5,14 +5,14 @@
 2. `babel` 安装 & 配置 
     * 安装
       * 核心包  
-        `npm i --save-dev @babel/cli @babel/core @babel/plugin-proposal-class-properties @babel/preset-env`  
+        `npm i --save-dev @babel/cli @babel/core @babel/preset-env`  
       * 补丁包  
         `npm i --save @babel/polyfill`   (不建议使用)  
         `npm i --save core-js regenerator-runtime` 
       * 项目包  
         `npm i --save-dev @babel/preset-react`
       * 项目优化工具包  
-      `npm i --save-dev babel-eslint babel-loader babel-plugin-transform-react-remove-prop-types`  
+      `npm i --save-dev @babel/plugin-proposal-class-properties babel-plugin-transform-react-remove-prop-types`  
     * 详细介绍  
       * `@babel/cli` 命令行代码，除了配合 `webpack` 使用，还能使用命令行使用 
       * `@babel/core` 核心代码  
@@ -20,8 +20,6 @@
       * `@babel/polyfill` 补丁包，模拟完整的 ES6 运行环境，[官网介绍](https://babeljs.io/docs/en/babel-polyfill#docsNav)
       * `@babel/preset-env` 智能预设环境，最新版的 `useBuiltIns` 参数可以按需加载的补丁包 [官网介绍](https://babeljs.io/docs/en/babel-preset-env#docsNav)。**`@babel/polyfill` is deprecated. Please, use required parts of `core-js`
   and `regenerator-runtime/runtime` separately**
-      * `babel-eslint` 使用 `eslint` 去设置 `parser` 的时候用到
-      * `babel-loader` 给 `webpack` 使用的
       * `babel-plugin-transform-react-remove-prop-types` 打包的时候去掉 `react` 的 `prop-types`
     * 创建 `.babelrc`  
       ```JSON
@@ -59,11 +57,11 @@
 4. `webpack` 安装 & 配置 
     * 安装  
     工具包  
-    `npm i --save-dev webpack webpack-cli webpack-dev-server style-loader css-loader url-loader file-loader`  
+    `npm i --save-dev webpack webpack-cli `  
     服务器工具包  
-    `npm i --save-dev webpack-dev-middleware webpack-hot-middleware `  
+    `npm i --save-dev webpack-dev-server webpack-dev-middleware webpack-hot-middleware `  
     打包工具包  
-    `npm i --save-dev webpack-merge clean-webpack-plugin html-webpack-plugin uglifyjs-webpack-plugin optimize-css-assets-webpack-plugin mini-css-extract-plugin inline-manifest-webpack-plugin `
+    `npm i --save-dev babel-loader style-loader css-loader url-loader file-loader webpack-merge clean-webpack-plugin html-webpack-plugin uglifyjs-webpack-plugin optimize-css-assets-webpack-plugin mini-css-extract-plugin inline-manifest-webpack-plugin `
     * 详细介绍
       * `webpack` 核心包
       * `webpack-cli` 命令行工具
@@ -82,7 +80,7 @@
 5. `eslint` 安装 & 配置 
     * 安装  
     核心包  
-    `npm i --save-dev eslint`  
+    `npm i --save-dev eslint babel-eslint`  
     项目包  
     `npm i --save-dev eslint-plugin-react`
     * 配置  
