@@ -88,7 +88,7 @@ const config = webpackMerge(commonConfig, {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 100,
+            limit: 2500,
             outputPath: assestPathName,
             // 和 JS / CSS 在统一路径下·
             publicPath: './'

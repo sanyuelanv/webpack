@@ -18,7 +18,11 @@ const config = webpackMerge(commonConfig,{
     compress: true,
     port,
     host,
-    historyApiFallback: true
+    historyApiFallback: true,
+    after (app) {
+      // 打开页面
+      //childProcess.exec(`${cmd} http://${host}:${port}/`)
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

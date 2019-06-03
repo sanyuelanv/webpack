@@ -6,5 +6,5 @@ log
 package-lock.json
 stats.json
 .idea
-build/
+build
 .vscode
