@@ -14,7 +14,7 @@
       * 项目优化工具包  
       `npm i --save-dev @babel/plugin-proposal-class-properties babel-plugin-transform-react-remove-prop-types`  
     * 详细介绍  
-      * `@babel/cli` 命令行代码，除了配合 `webpack` 使用，还能使用命令行使用 
+      * `@babel/cli` 命令行代码，除了配合 `webpack` 使用，还能使用命令行使用 : `./node_modules/.bin/babel test.js`
       * `@babel/core` 核心代码  
       * `@babel/plugin-proposal-class-properties` 类属性语法，[官网介绍](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties)  
       * `@babel/polyfill` 补丁包，模拟完整的 ES6 运行环境，[官网介绍](https://babeljs.io/docs/en/babel-polyfill#docsNav)
