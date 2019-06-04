@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
 const process = require('process')
 
@@ -58,7 +59,7 @@ const config = webpackMerge(commonConfig, {
     new MiniCssExtractPlugin({ filename: `${assestPathName}/[name].[chunkhash:5].css` }),
     new HtmlWebpackPlugin({
       filename: `index.html`,
-      title: 'demo',
+      title: `${assestPathName}/dll.js`,
       template: path.join(appDir, 'app.html'),
       minify: {
         collapseWhitespace: true,
@@ -67,7 +68,10 @@ const config = webpackMerge(commonConfig, {
       inject: true,
       chunks: ['runtime','vendors', 'default', 'app']
     }),
-    new InlineManifestWebpackPlugin('runtime')
+    new InlineManifestWebpackPlugin('runtime'),
+    new CopyPlugin([
+      { from: path.resolve(process.cwd(), 'dll/dll.js'), to: path.join(outputPath, assestPathName) },
+    ]),
   ],
   module: {
     rules: [

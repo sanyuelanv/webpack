@@ -14,12 +14,12 @@ const host = ip.address()
 const config = webpackMerge(commonConfig,{
   mode: 'development',
   devServer: {
-    contentBase: path.join(__dirname, 'build'),
+    contentBase: path.resolve(process.cwd(), 'dll'),
     compress: true,
     port,
     host,
     historyApiFallback: true,
-    after (app) {
+    after () {
       // 打开页面
       //childProcess.exec(`${cmd} http://${host}:${port}/`)
     }
@@ -28,7 +28,7 @@ const config = webpackMerge(commonConfig,{
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: `index.html`,
-      title: 'demo',
+      title: '/dll.js',
       template: path.join(appDir, 'app.html'),
       minify: {
         collapseWhitespace: true,

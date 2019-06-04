@@ -8,3 +8,4 @@ stats.json
 .idea
 build
 .vscode
+package-lock.json

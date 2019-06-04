@@ -60,7 +60,7 @@
     * 服务器工具包  
     `npm i --save-dev webpack-dev-server webpack-dev-middleware webpack-hot-middleware`  
     * 打包工具包  
-    `npm i --save-dev babel-loader style-loader css-loader postcss-loader   url-loader file-loader webpack-merge clean-webpack-plugin html-webpack-plugin uglifyjs-webpack-plugin optimize-css-assets-webpack-plugin mini-css-extract-plugin inline-manifest-webpack-plugin `
+    `npm i --save-dev babel-loader style-loader css-loader postcss-loader   url-loader file-loader webpack-merge clean-webpack-plugin html-webpack-plugin uglifyjs-webpack-plugin optimize-css-assets-webpack-plugin mini-css-extract-plugin inline-manifest-webpack-plugin copy-webpack-plugin`
   * 详细介绍
     * `webpack` 核心包
     * `webpack-cli` 命令行工具
@@ -76,6 +76,7 @@
     * `optimize-css-assets-webpack-plugin` 压缩CSS
     * `mini-css-extract-plugin` 分离 `css`
     * `inline-manifest-webpack-plugin` 把 `manifest` 写入到 `HTML`（`manifest` & `runtime`）
+    * `copy-webpack-plugin` 把资源复制到指定目录
 ### `eslint` 安装 & 配置 
   * 安装  
     * 核心包  
@@ -121,31 +122,12 @@
 
 ## 实战
 1. 简单的项目
-    * 项目结构
-      ```
-      ├── app.css
-      ├── app.html
-      ├── app.js
-      ├── assets
-      └── page
-          ├── css.css
-          └── index.js
-      ```
-    * `webpack` 配置
-      * 项目结果
-        ```
-        ├── webpack.config.js
-        └── config
-          ├── webpack.common.config.js
-          ├── webpack.dev.config.js
-          └── webpack.prod.config.js
-        ```
-      * `entry` & `output` & `plugins` & `module`
-      * `chunks` & `bundle`
-      * 分离 `js` 文件的策略
-      * 第三方 `CSS` 文件插入
+    * 项目结构搭建
+    * `entry` & `output` & `plugins` & `module`
+    * 第三方 `CSS` 文件插入
+    * `DLL` 文件分离
+    * 分离 `js` 文件的策略
 2. 单页面应用
 3. 多页面应用
-4. 优化 & 分包
 
 ## 阅读其他框架的官方手脚架的配置

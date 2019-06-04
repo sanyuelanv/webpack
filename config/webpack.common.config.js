@@ -11,14 +11,12 @@ const entry = {
 
 module.exports = {
   entry,
-  output: {
-    path: path.resolve(process.cwd(), 'build'),
-    chunkFilename: '[name].[chunkhash:5].chunk.js',
-    publicPath: '/',
-    filename: '[name].js'
-  },
   plugins: [
     new webpack.ProvidePlugin({ PropTypes: 'prop-types' }),
+    new webpack.DllReferencePlugin({
+      context: process.cwd(),
+      manifest: require('../dll/dll.manifest.json')
+    }),
     new webpack.DefinePlugin({ __DEV__: JSON.stringify(JSON.parse(process.env.NODE_ENV || 'true')) })
   ],
   module: {
