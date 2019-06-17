@@ -11,6 +11,7 @@
     * 项目包  
         `npm i --save-dev @babel/preset-react`
     * 项目优化工具包  
+      `npm i --save whatwg-fetch`
       `npm i --save-dev @babel/plugin-proposal-class-properties babel-plugin-transform-react-remove-prop-types`  
   * 详细介绍  
     * `@babel/cli` 命令行代码，除了配合 `webpack` 使用，还能使用命令行使用 : `./node_modules/.bin/babel test.js`
@@ -28,7 +29,7 @@
         [
           "@babel/preset-env",
           {
-            "useBuiltIns": "entry", // core-js regenerator-runtime 自动导入
+            "useBuiltIns": "usage", // core-js regenerator-runtime 自动导入
             "corejs":"3.0.0"
           }
         ],
@@ -127,7 +128,3 @@
     * 第三方 `CSS` 文件插入
     * `DLL` 文件分离
     * 分离 `js` 文件的策略
-2. 单页面应用
-3. 多页面应用
-
-## 阅读其他框架的官方手脚架的配置
