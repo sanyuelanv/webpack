@@ -127,5 +127,5 @@
     * 项目结构搭建
     * `entry` & `output` & `plugins` & `module`
     * 第三方 `CSS` 文件插入
-    * `DLL` 文件分离
     * 分离 `js` 文件的策略
+    * `DLL` 文件分离
