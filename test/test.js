@@ -8,3 +8,5 @@ function sleep (time) {
 (async function(){
   await sleep(3000);
 })()
+
+fetch()

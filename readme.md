@@ -14,13 +14,14 @@
       `npm i --save whatwg-fetch`
       `npm i --save-dev @babel/plugin-proposal-class-properties babel-plugin-transform-react-remove-prop-types`  
   * 详细介绍  
-    * `@babel/cli` 命令行代码，除了配合 `webpack` 使用，还能使用命令行使用 : `./node_modules/.bin/babel test.js`
+    * `@babel/cli` 命令行代码，除了配合 `webpack` 使用，还能使用命令行使用 : `./node_modules/.bin/babel test/test.js`
     * `@babel/core` 核心代码  
     * `@babel/plugin-proposal-class-properties` 类属性语法，[官网介绍](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties)  
     * `@babel/polyfill` 补丁包，模拟完整的 ES6 运行环境，[官网介绍](https://babeljs.io/docs/en/babel-polyfill#docsNav)
     * `@babel/preset-env` 智能预设环境，最新版的 `useBuiltIns` 参数可以按需加载的补丁包 [官网介绍](https://babeljs.io/docs/en/babel-preset-env#docsNav)。**`@babel/polyfill` is deprecated. Please, use required parts of `core-js`
   and `regenerator-runtime/runtime` separately**
     * `babel-plugin-transform-react-remove-prop-types` 打包的时候去掉 `react` 的 `prop-types`
+    * `whatwg-fetch` `core-js` 不包括 `fetch` 的补丁包
   * 创建 `.babelrc`  
     ```JSON
     // touch .babelrc
