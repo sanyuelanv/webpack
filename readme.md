@@ -1,5 +1,10 @@
 # 从 0 开始搭建一个现代化 web 前端工程
-
+## 大纲
+  * 项目结构搭建
+  * `entry` & `output` & `plugins` & `module`
+  * 第三方 `CSS` 文件插入
+  * 分离 `js` 文件的策略
+  * `DLL` 文件分离
 ## 创建工程
 ### `babel` 安装 & 配置 
   * 安装
@@ -7,11 +12,11 @@
         `npm i --save-dev @babel/cli @babel/core @babel/preset-env`  
     * 补丁包  
         `npm i --save @babel/polyfill`   (不建议使用)  
-        `npm i --save core-js regenerator-runtime` 
+        `npm i --save core-js regenerator-runtime`   
+        `npm i --save whatwg-fetch`
     * 项目包  
         `npm i --save-dev @babel/preset-react`
     * 项目优化工具包  
-      `npm i --save whatwg-fetch`
       `npm i --save-dev @babel/plugin-proposal-class-properties babel-plugin-transform-react-remove-prop-types`  
   * 详细介绍  
     * `@babel/cli` 命令行代码，除了配合 `webpack` 使用，还能使用命令行使用 : `./node_modules/.bin/babel test/test.js`
@@ -121,11 +126,8 @@
           }
       };
       ```
-
-## 实战
-1. 简单的项目
-    * 项目结构搭建
-    * `entry` & `output` & `plugins` & `module`
-    * 第三方 `CSS` 文件插入
-    * 分离 `js` 文件的策略
-    * `DLL` 文件分离
+# `react-hook` 的使用
+## 前端开发的趋势
+## `react-hook` 解决了什么问题
+## 两种写法的对比
+  
