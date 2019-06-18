@@ -25,7 +25,7 @@
     * `@babel/preset-env` 智能预设环境，最新版的 `useBuiltIns` 参数可以按需加载的补丁包 [官网介绍](https://babeljs.io/docs/en/babel-preset-env#docsNav)。**`@babel/polyfill` is deprecated. Please, use required parts of `core-js`
   and `regenerator-runtime/runtime` separately**
     * `babel-plugin-transform-react-remove-prop-types` 打包的时候去掉 `react` 的 `prop-types`
-    * `whatwg-fetch` `core-js` 不包括 `fetch` 的补丁包
+    * `whatwg-fetch` Web Hypertext Application Technology Working Group  `core-js` 不包括 `fetch` 的补丁包
   * 创建 `.babelrc`  
     ```JSON
     // touch .babelrc
