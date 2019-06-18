@@ -12,8 +12,7 @@
         `npm i --save-dev @babel/cli @babel/core @babel/preset-env`  
     * 补丁包  
         `npm i --save @babel/polyfill`   (不建议使用)  
-        `npm i --save core-js regenerator-runtime`   
-        `npm i --save whatwg-fetch`
+        `npm i --save core-js regenerator-runtime whatwg-fetch`   
     * 项目包  
         `npm i --save-dev @babel/preset-react`
     * 项目优化工具包  
