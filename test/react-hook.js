@@ -1,8 +1,7 @@
 import React from 'react'
-const Main = () => {
+const MyCom = () => {
   return (
-    <div className={style.main}>
-      <div className={style.logo}></div>
-    </div>
+    <div className='main'></div>
   )
 }
+export default MyCom
