@@ -4,7 +4,6 @@ const path = require('path')
 const webpack = require('webpack')
 const process = require('process')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
 const nodeModuleDir = path.resolve(process.cwd(), 'node_module')
 const appDir = path.resolve(process.cwd(), 'app')
 const ip = require('ip')
@@ -14,15 +13,18 @@ const host = ip.address()
 const config = webpackMerge(commonConfig,{
   mode: 'development',
   devServer: {
-    contentBase: path.resolve(process.cwd(), 'dll'),
+    contentBase: '',
     compress: true,
     port,
     host,
     historyApiFallback: true,
-    after () {
-      // 打开页面
-      //childProcess.exec(`${cmd} http://${host}:${port}/`)
+    proxy: {
+      '/api': {
+        target: '',
+        changeOrigin: true,
+      }
     }
+
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
