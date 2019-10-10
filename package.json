@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "babel": "babel test/test.js",
+    "dll": "webpack --env.NODE_ENV=dll",
     "dev": "webpack-dev-server --env.NODE_ENV=dev",
     "dep": "webpack --env.NODE_ENV=prod"
   },

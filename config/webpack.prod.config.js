@@ -12,6 +12,7 @@ const nodeModuleDir = path.resolve(process.cwd(), 'node_module')
 const appDir = path.resolve(process.cwd(), 'app')
 const outputPath = path.resolve(process.cwd(), 'build')
 const assestPathName = 'assets'
+const CopyPlugin = require('copy-webpack-plugin')
 const config = webpackMerge(commonConfig, {
   mode: 'production',
   output: {
@@ -56,7 +57,7 @@ const config = webpackMerge(commonConfig, {
     new MiniCssExtractPlugin({ filename: assestPathName + `/[name].[chunkhash:5].css` }),
     new HtmlWebpackPlugin({
       filename: `index.html`,
-      title: '',
+      title: `${assestPathName}/dll.js`,
       template: path.join(appDir, 'app.html'),
       minify: {
         collapseWhitespace: true,
@@ -65,7 +66,10 @@ const config = webpackMerge(commonConfig, {
       inject: true,
       chunks: ['runtime', 'vendors', 'default', 'app']
     }),
-    new InlineManifestWebpackPlugin('runtime')
+    new InlineManifestWebpackPlugin('runtime'),
+    new CopyPlugin([
+      { from: path.resolve(process.cwd(), 'dll/dll.js'), to: path.join(outputPath, assestPathName) },
+    ]),
   ],
   module: {
     rules: [

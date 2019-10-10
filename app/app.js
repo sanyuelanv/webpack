@@ -67,7 +67,7 @@ const App = () => {
       <div className={style.header}>
         <input onChange={onChange} value={text} className={style.input} />
       </div>
-      <div onClick={a} className={style.body}>{
+      <div className={style.body}>{
         renderRes()
       }</div>
     </div>

@@ -6,6 +6,10 @@ const appDir = path.resolve(process.cwd(), 'app')
 module.exports = {
   entry: { 'app': [path.resolve(appDir, 'app.js')] },
   plugins: [
+    new webpack.DllReferencePlugin({
+      context: process.cwd(),
+      manifest: require('../dll/dll.manifest.json')
+    }),
     new webpack.DefinePlugin({ __DEV__: JSON.stringify(JSON.parse(process.env.NODE_ENV || 'true')) })
   ],
   module: {

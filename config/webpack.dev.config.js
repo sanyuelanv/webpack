@@ -12,7 +12,7 @@ const appDir = path.resolve(process.cwd(), 'app')
 const config = webpackMerge(commonConfig, {
   mode: 'development',
   devServer: {
-    contentBase: 'build',
+    contentBase: path.resolve(process.cwd(), 'dll'),
     compress: true,
     port,
     host,
@@ -28,7 +28,7 @@ const config = webpackMerge(commonConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: `index.html`,
-      title: '',
+      title: '/dll.js',
       template: path.join(appDir, 'app.html'),
       inject: true,
       chunks: ['app']
