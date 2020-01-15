@@ -4,20 +4,19 @@ const webpack = require('webpack')
 const nodeModuleDir = path.resolve(process.cwd(), 'node_module')
 const appDir = path.resolve(process.cwd(), 'app')
 module.exports = {
-  entry: { 'app': [path.resolve(appDir, 'app.js')] },
+  entry: { 'app': [path.resolve(appDir, 'app.tsx')] },
   plugins: [
-    new webpack.DllReferencePlugin({
-      context: process.cwd(),
-      manifest: require('../dll/dll.manifest.json')
-    }),
     new webpack.DefinePlugin({ __DEV__: JSON.stringify(JSON.parse(process.env.NODE_ENV || 'true')) })
   ],
+  resolve: {
+    extensions: [".ts", ".tsx",'.js']
+  },
   module: {
     rules: [{
-      test: /(js)$/,
-      use: ['babel-loader'],
+      test: /\.ts(x?)$/,
+      use: ['ts-loader'],
       include: [appDir],
       exclude: [nodeModuleDir]
     }]
-  },
+  }
 }

@@ -1,54 +1,25 @@
-# 从 0 开始搭建一个现代化 web 前端工程
+# 从 0 开始搭建一个 typeScript react工程
 ## 大纲
   * 项目结构搭建
   * `entry` & `output` & `plugins` & `module`
-  * 第三方 `CSS` 文件插入
-  * 分离 `js` 文件的策略
-  * `DLL` 文件分离
+  * `ts` 里面引入资源
 ## 创建工程
-### `babel` 安装 & 配置 
-  * 安装
-    * 核心包  
-        `npm i --save-dev @babel/cli @babel/core @babel/preset-env`  
-    * 补丁包  
-        `npm i --save @babel/polyfill`   (不建议使用)  
-        `npm i --save core-js regenerator-runtime whatwg-fetch`   
-    * 项目包  
-        `npm i --save-dev @babel/preset-react`
-    * 项目优化工具包  
-      `npm i --save-dev @babel/plugin-proposal-class-properties babel-plugin-transform-react-remove-prop-types`  
-  * 详细介绍  
-    * `@babel/cli` 命令行代码，除了配合 `webpack` 使用，还能使用命令行使用 : `./node_modules/.bin/babel test/test.js`
-    * `@babel/core` 核心代码  
-    * `@babel/plugin-proposal-class-properties` 类属性语法，[官网介绍](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties)  
-    * `@babel/polyfill` 补丁包，模拟完整的 ES6 运行环境，[官网介绍](https://babeljs.io/docs/en/babel-polyfill#docsNav)
-    * `@babel/preset-env` 智能预设环境，最新版的 `useBuiltIns` 参数可以按需加载的补丁包 [官网介绍](https://babeljs.io/docs/en/babel-preset-env#docsNav)。**`@babel/polyfill` is deprecated. Please, use required parts of `core-js`
-  and `regenerator-runtime/runtime` separately**
-    * `babel-plugin-transform-react-remove-prop-types` 打包的时候去掉 `react` 的 `prop-types`
-    * `whatwg-fetch` Web Hypertext Application Technology Working Group  `core-js` 不包括 `fetch` 的补丁包
-  * 创建 `.babelrc`  
+### `typeScript` 安装 & 配置 
+  * 安装 `npm i --save-dev @types/react @types/react-dom ts-loader typescript @teamsupercell/typings-for-css-modules-loader`  
+  * 创建 `tsconfig.json`  
     ```JSON
-    // touch .babelrc
     {
-      "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "useBuiltIns": "usage", // core-js regenerator-runtime 自动导入
-            "corejs":"3.0.0"
-          }
-        ],
-        "@babel/preset-react"
-      ],
-      "plugins": [
-        "transform-react-remove-prop-types",
-        "@babel/plugin-proposal-class-properties"
-      ]
+      "compilerOptions": {
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "es6",
+        "target": "es5",
+        "jsx": "react"
+      }
     }
     ```
 ### `postcss` 安装 & 配置 
-  * 安装  
-  `npm i --save-dev autoprefixer`
+  * 安装   `npm i --save-dev autoprefixer`
   * 配置
     ```javascript
     // touch postcss.config.js
@@ -83,45 +54,3 @@
     * `mini-css-extract-plugin` 分离 `css`
     * `inline-manifest-webpack-plugin` 把 `manifest` 写入到 `HTML`（`manifest` & `runtime`）
     * `copy-webpack-plugin` 把资源复制到指定目录
-### `eslint` 安装 & 配置 
-  * 安装  
-    * 核心包  
-    `npm i --save-dev eslint babel-eslint`  
-    * 项目包  
-    `npm i --save-dev eslint-plugin-react`
-    * 配置  
-      使用 ` ./node_modules/.bin/eslint --init` 创建配置，按照项目去选择其中的一些选项，自动生成了 `eslintrc.js` 文件。如下面代码，我们还需要根据使用的 `babel` 和 `react` 做一些配置的修改
-      ```javascript
-      module.exports = {
-          // 告诉 eslint 我们用了 babel 的
-          "parser": "babel-eslint",
-          "env": {
-              "es6": true,
-              "browser": true,
-              "node": true
-          },
-          "extends": [
-              "eslint:recommended",
-              // 项目相关：使用了 react
-              "plugin:react/recommended"
-          ],
-          "globals": {
-              "Atomics": "readonly",
-              "SharedArrayBuffer": "readonly",
-              // 不用每次都导入 PropTypes
-              "PropTypes": false
-          },
-          "parserOptions": {
-              "ecmaFeatures": {
-                  "jsx": true
-              },
-              "ecmaVersion": 2019,
-              "sourceType": "module"
-          },
-          "plugins": [
-              "react"
-          ],
-          "rules": {
-          }
-      };
-      ```
