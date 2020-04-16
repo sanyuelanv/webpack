@@ -5,7 +5,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const path = require('path')
 const process = require('process')
 const nodeModuleDir = path.resolve(process.cwd(), 'node_module')
@@ -33,7 +32,7 @@ const config = webpackMerge(commonConfig, {
       }),
       new OptimizeCSSAssetsPlugin({})
     ],
-    runtimeChunk: { name: 'runtime' },
+    // runtimeChunk: { name: 'runtime' },
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
@@ -63,9 +62,8 @@ const config = webpackMerge(commonConfig, {
         conservativeCollapse: true
       },
       inject: true,
-      chunks: ['runtime', 'vendors', 'default', 'app']
-    }),
-    new InlineManifestWebpackPlugin('runtime'),
+      chunks: ['vendors', 'default', 'app']
+    })
   ],
   module: {
     rules: [
