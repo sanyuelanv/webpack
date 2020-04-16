@@ -4,6 +4,7 @@ import './app.common.css';
 
 import { Hello } from "./components/hello";
 
+console.log(__DEV__)
 ReactDOM.render(
     <Hello
         compiler="TypeScript"

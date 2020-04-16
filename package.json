@@ -8,6 +8,9 @@
     "dev": "webpack-dev-server --env.NODE_ENV=dev",
     "dep": "webpack --env.NODE_ENV=prod"
   },
+  "browserslist": [
+    "last 2 version"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
